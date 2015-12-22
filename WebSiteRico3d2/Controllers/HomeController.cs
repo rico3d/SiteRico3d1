@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Mosaicos.LojaVirtual.Dominio.Repositorio;
 
 namespace WebSiteRico3d2.Controllers
 {
     public class HomeController : Controller
     {
+        private LojaMosaicosContext _loja;
+
         public ActionResult Index()
         {
             return View();
@@ -17,7 +20,9 @@ namespace WebSiteRico3d2.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            return View();
+            _loja = new LojaMosaicosContext();
+            var mosaicos = _loja.Mosaicos;
+            return View(mosaicos);
         }
 
         public ActionResult Contact()
@@ -29,7 +34,7 @@ namespace WebSiteRico3d2.Controllers
 
         public ActionResult Teste()
         {
-
+            
             return View();
         }
 
@@ -39,6 +44,10 @@ namespace WebSiteRico3d2.Controllers
 
             return View();
         }
+
+        
+        // GET: Produtos
+        
 
     }
 }

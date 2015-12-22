@@ -29,5 +29,7 @@ namespace WebSiteRico3d2.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Mosaicos.LojaVirtual.Dominio.Entidade.Produto> Produtoes { get; set; }
     }
 }
