@@ -14,7 +14,6 @@ using System.Linq;
 using BrightstarDB.Client;
 using BrightstarDB.EntityFramework;
 
-using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -133,10 +132,9 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
     	public Mosaico(BrightstarEntityContext context, BrightstarDB.Client.IDataObject dataObject) : base(context, dataObject) { }
         public Mosaico(BrightstarEntityContext context) : base(context, typeof(Mosaico)) { }
     	public Mosaico() : base() { }
-    	public System.String MosaicoId { get {return GetKey(); } set { SetKey(value); } }
+    	public System.String Id { get {return GetKey(); } set { SetKey(value); } }
     	#region Implementation of Mosaicos.LojaVirtual.Dominio.Repositorio.IMosaico
-    	
-    	[System.ComponentModel.DataAnnotations.RequiredAttribute(ErrorMessage="Favor prover um nome para o produto")]
+    
     	public System.String Nome
     	{
             		get { return GetRelatedProperty<System.String>("Nome"); }
@@ -147,18 +145,6 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
     	{
             		get { return GetRelatedProperty<System.String>("Descricao"); }
             		set { SetRelatedProperty("Descricao", value); }
-    	}
-    
-    	public System.Decimal Preco
-    	{
-            		get { return GetRelatedProperty<System.Decimal>("Preco"); }
-            		set { SetRelatedProperty("Preco", value); }
-    	}
-    
-    	public System.String Categoria
-    	{
-            		get { return GetRelatedProperty<System.String>("Categoria"); }
-            		set { SetRelatedProperty("Categoria", value); }
     	}
     	#endregion
     }

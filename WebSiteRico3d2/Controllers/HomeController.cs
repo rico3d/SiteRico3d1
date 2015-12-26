@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Mosaicos.LojaVirtual.Dominio.Repositorio;
+using WebSiteRico3d2.Models;
 
 namespace WebSiteRico3d2.Controllers
 {
@@ -16,13 +17,27 @@ namespace WebSiteRico3d2.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ViewResult About(int pagina = 1)
         {
             ViewBag.Message = "Your application description page.";
 
             _loja = new LojaMosaicosContext();
-            var mosaicos = _loja.Mosaicos;
-            return View(mosaicos);
+            _loja.Mosaicos.Add(new Mosaico()
+            {
+               Descricao = "NewDescricao",
+               Nome = "NewNome",
+             });
+
+            _loja.SaveChanges();
+
+            var model = new MosaicosViewModel()
+            {
+                Mosaicos = _loja.Mosaicos.Cast<Mosaico>()
+            };
+
+            //var mosaicos = 
+
+            return View(model);
         }
 
         public ActionResult Contact()
