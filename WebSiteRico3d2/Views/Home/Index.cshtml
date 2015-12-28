@@ -1,4 +1,6 @@
-﻿@{
+﻿@model WebSiteRico3d2.Models.MosaicosViewModel
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -14,7 +16,7 @@
         <p>
             Loja de Mosaicos
         </p>
-        <p><a class="btn btn-default"@Html.ActionLink("Loja", "Teste", "Home")></a></p>
+        <p><a class="btn btn-default"@Html.ActionLink("Loja","ListaProdutos","Vitrine")></a></p>
     </div>
     <div class="col-md-4">
         <h2>Get more libraries</h2>

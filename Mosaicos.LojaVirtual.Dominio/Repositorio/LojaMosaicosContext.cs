@@ -135,6 +135,12 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
     	public System.String Id { get {return GetKey(); } set { SetKey(value); } }
     	#region Implementation of Mosaicos.LojaVirtual.Dominio.Repositorio.IMosaico
     
+    	public System.Int32 Item
+    	{
+            		get { return GetRelatedProperty<System.Int32>("Item"); }
+            		set { SetRelatedProperty("Item", value); }
+    	}
+    
     	public System.String Nome
     	{
             		get { return GetRelatedProperty<System.String>("Nome"); }
@@ -145,6 +151,30 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
     	{
             		get { return GetRelatedProperty<System.String>("Descricao"); }
             		set { SetRelatedProperty("Descricao", value); }
+    	}
+    
+    	public System.Decimal Preco
+    	{
+            		get { return GetRelatedProperty<System.Decimal>("Preco"); }
+            		set { SetRelatedProperty("Preco", value); }
+    	}
+    
+    	public System.Decimal Peso
+    	{
+            		get { return GetRelatedProperty<System.Decimal>("Peso"); }
+            		set { SetRelatedProperty("Peso", value); }
+    	}
+    
+    	public System.String Dimensao
+    	{
+            		get { return GetRelatedProperty<System.String>("Dimensao"); }
+            		set { SetRelatedProperty("Dimensao", value); }
+    	}
+    
+    	public System.String Imagem
+    	{
+            		get { return GetRelatedProperty<System.String>("Imagem"); }
+            		set { SetRelatedProperty("Imagem", value); }
     	}
     	#endregion
     }

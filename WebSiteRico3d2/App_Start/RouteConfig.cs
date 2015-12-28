@@ -18,6 +18,12 @@ namespace WebSiteRico3d2
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name:null,
+                url: "Pagina(pagina)",
+                defaults: new { controller = "Vitrine", action = "ListaMosaicos" }
+                );
         }
     }
 }
