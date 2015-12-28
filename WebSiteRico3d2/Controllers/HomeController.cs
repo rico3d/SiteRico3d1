@@ -176,6 +176,12 @@ namespace WebSiteRico3d2.Controllers
                 .ToList();
 
             model.Mosaicos = mosaicos;
+            model.Paginacao = new Paginacao()
+            {
+                PaginaAtual = pagina,
+                ItensPorPagina = mosaicosPorPagina,
+                ItensTotal = _loja.Mosaicos.Cast<Mosaico>().ToList().Count
+            };
            
 
             return View(model);

@@ -1,7 +1,12 @@
-﻿@model WebSiteRico3d2.Models.MosaicosViewModel
+﻿@using WebSiteRico3d2.HtmlHelpers
+@model WebSiteRico3d2.Models.MosaicosViewModel
 
 @foreach (var p in Model.Mosaicos)
 {
     @Html.Partial("ProdutoDetalhes", p)
 
 }
+
+<div class="btn-group pull-right">
+@Html.PageLinks(Model.Paginacao, x => Url.Action("About", new { pagina = x }))
+</div>
