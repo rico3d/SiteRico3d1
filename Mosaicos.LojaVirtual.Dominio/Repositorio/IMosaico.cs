@@ -19,6 +19,9 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
         string Dimensao { get; set; }
         string Imagem { get; set; }
 
+        [InverseProperty("Mosaicos")]
+        ICategoria Categoria { get; set; }
+
     }
 
 

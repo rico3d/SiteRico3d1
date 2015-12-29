@@ -38,6 +38,8 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
         public static void InitializeEntityMappingStore()
         {
     		var provider = new ReflectionMappingProvider();
+    		provider.AddMappingsForType(EntityMappingStore.Instance, typeof(Mosaicos.LojaVirtual.Dominio.Repositorio.ICategoria));
+    		EntityMappingStore.Instance.SetImplMapping<Mosaicos.LojaVirtual.Dominio.Repositorio.ICategoria, Mosaicos.LojaVirtual.Dominio.Repositorio.Categoria>();
     		provider.AddMappingsForType(EntityMappingStore.Instance, typeof(Mosaicos.LojaVirtual.Dominio.Repositorio.IMosaico));
     		EntityMappingStore.Instance.SetImplMapping<Mosaicos.LojaVirtual.Dominio.Repositorio.IMosaico, Mosaicos.LojaVirtual.Dominio.Repositorio.Mosaico>();
     	}
@@ -105,7 +107,13 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
     	
     	private void InitializeContext() 
     	{
+    		Categorias = 	new BrightstarEntitySet<Mosaicos.LojaVirtual.Dominio.Repositorio.ICategoria>(this);
     		Mosaicos = 	new BrightstarEntitySet<Mosaicos.LojaVirtual.Dominio.Repositorio.IMosaico>(this);
+    	}
+    	
+    	public IEntitySet<Mosaicos.LojaVirtual.Dominio.Repositorio.ICategoria> Categorias
+    	{
+    		get; private set;
     	}
     	
     	public IEntitySet<Mosaicos.LojaVirtual.Dominio.Repositorio.IMosaico> Mosaicos
@@ -115,6 +123,9 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
     	
         public IEntitySet<T> EntitySet<T>() where T : class {
             var itemType = typeof(T);
+            if (typeof(T).Equals(typeof(Mosaicos.LojaVirtual.Dominio.Repositorio.ICategoria))) {
+                return (IEntitySet<T>)this.Categorias;
+            }
             if (typeof(T).Equals(typeof(Mosaicos.LojaVirtual.Dominio.Repositorio.IMosaico))) {
                 return (IEntitySet<T>)this.Mosaicos;
             }
@@ -123,6 +134,30 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
     
         } // end class LojaMosaicosContext
         
+}
+namespace Mosaicos.LojaVirtual.Dominio.Repositorio 
+{
+    
+    public partial class Categoria : BrightstarEntityObject, ICategoria 
+    {
+    	public Categoria(BrightstarEntityContext context, BrightstarDB.Client.IDataObject dataObject) : base(context, dataObject) { }
+        public Categoria(BrightstarEntityContext context) : base(context, typeof(Categoria)) { }
+    	public Categoria() : base() { }
+    	public System.String Id { get {return GetKey(); } set { SetKey(value); } }
+    	#region Implementation of Mosaicos.LojaVirtual.Dominio.Repositorio.ICategoria
+    
+    	public System.String Nome
+    	{
+            		get { return GetRelatedProperty<System.String>("Nome"); }
+            		set { SetRelatedProperty("Nome", value); }
+    	}
+    	public System.Collections.Generic.ICollection<Mosaicos.LojaVirtual.Dominio.Repositorio.IMosaico> Mosaicos
+    	{
+    		get { return GetRelatedObjects<Mosaicos.LojaVirtual.Dominio.Repositorio.IMosaico>("Mosaicos"); }
+    		set { if (value == null) throw new ArgumentNullException("value"); SetRelatedObjects("Mosaicos", value); }
+    								}
+    	#endregion
+    }
 }
 namespace Mosaicos.LojaVirtual.Dominio.Repositorio 
 {
@@ -175,6 +210,12 @@ namespace Mosaicos.LojaVirtual.Dominio.Repositorio
     	{
             		get { return GetRelatedProperty<System.String>("Imagem"); }
             		set { SetRelatedProperty("Imagem", value); }
+    	}
+    
+    	public Mosaicos.LojaVirtual.Dominio.Repositorio.ICategoria Categoria
+    	{
+            get { return GetRelatedObject<Mosaicos.LojaVirtual.Dominio.Repositorio.ICategoria>("Categoria"); }
+            set { SetRelatedObject<Mosaicos.LojaVirtual.Dominio.Repositorio.ICategoria>("Categoria", value); }
     	}
     	#endregion
     }
