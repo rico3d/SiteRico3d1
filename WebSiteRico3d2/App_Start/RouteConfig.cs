@@ -22,8 +22,10 @@ namespace WebSiteRico3d2
             routes.MapRoute(
                 name:null,
                 url: "Pagina(pagina)",
-                defaults: new { controller = "Vitrine", action = "ListaMosaicos" }
+                defaults: new { controller = "Vitrine", action = "ListaMosaicos"}
                 );
+
+           
         }
     }
 }

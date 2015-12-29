@@ -1,7 +1,23 @@
-﻿@model WebSiteRico3d2.Models.MosaicosViewModel
+﻿@using WebSiteRico3d2.HtmlHelpers
+@model WebSiteRico3d2.Models.MosaicosViewModel
 
-@foreach (var p in Model.Mosaicos)
-{
-    @Html.Partial("ProdutoDetalhes", p)
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <a class="navbar-brand" href="#">Loja de Mosaicos</a>
+</div>
 
-}
+<div class="row panel">
+    <div id="categorias" class="col-xs-3">
+        Minhas Categorias
+    </div>
+    <div id="categorias" class="col-xs-8">
+        @foreach (var p in Model.Mosaicos)
+        {
+            @Html.Partial("ProdutoDetalhes", p)
+
+        }
+    </div>
+</div>
+
+<div class="btn-group pull-right">
+    @Html.PageLinks(Model.Paginacao, x => Url.Action("ListaMosaicos", new { pagina = x }))
+</div>

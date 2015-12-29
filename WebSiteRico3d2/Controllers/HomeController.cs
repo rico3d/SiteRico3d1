@@ -14,22 +14,23 @@ namespace WebSiteRico3d2.Controllers
     public class HomeController : Controller
     {
         private LojaMosaicosContext _loja;
-
+        
         public ActionResult Index()
         {
-           
-           
+            TempData["path"] = HttpContext.Server.MapPath("~/App_Data/");
+            TempData.Keep("path");
+
             return View();
         }
 
-        public ViewResult About(int pagina = 1)
+        public ActionResult About(int pagina = 1)
         {
             ViewBag.Message = "Your application description page.";
+            var path = (string) TempData["path"];
 
-            string path = HttpContext.Server.MapPath("~/App_Data/");
             var connectionString = "type=embedded;storesdirectory=" + path + "brightstar;storename=test5";
             _loja = new LojaMosaicosContext(connectionString);
-            
+           
             
              
             //_loja.Mosaicos.Add(new Mosaico()
