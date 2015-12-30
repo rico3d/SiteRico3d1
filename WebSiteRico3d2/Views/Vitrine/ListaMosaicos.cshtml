@@ -7,7 +7,7 @@
 
 <div class="row panel">
     <div id="categorias" class="col-xs-3">
-        Minhas Categorias
+        @Html.Action("Menu","Categoria")
     </div>
     <div id="categorias" class="col-xs-8">
         @foreach (var p in Model.Mosaicos)
@@ -19,5 +19,5 @@
 </div>
 
 <div class="btn-group pull-right">
-    @Html.PageLinks(Model.Paginacao, x => Url.Action("ListaMosaicos", new { pagina = x }))
+    @Html.PageLinks(Model.Paginacao, x => Url.Action("ListaMosaicos", "Vitrine", new { pagina = x, nomecategoria = Model.CategoriaAtual }))
 </div>

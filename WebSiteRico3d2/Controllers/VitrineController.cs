@@ -13,7 +13,7 @@ namespace WebSiteRico3d2.Controllers
 
         private LojaMosaicosContext _loja;
         private string _caminho;
-        
+        private MosaicosViewModel _model = new MosaicosViewModel();
         
         
         
@@ -22,7 +22,7 @@ namespace WebSiteRico3d2.Controllers
         
 
         // GET: Vitrine
-        public ActionResult ListaMosaicos(string categoria, int pagina = 1)
+        public ActionResult ListaMosaicos(string nomecategoria, int pagina = 1)
         {
             int mosaicosPorPagina = 3;
             //if (_caminho == null)
@@ -187,26 +187,28 @@ namespace WebSiteRico3d2.Controllers
 
 
             ////////////////////////////////////
-
-            var mosaicos = _loja.Mosaicos.Cast<Mosaico>().ToList()
-               .Where(p => p.Categoria == null || p.Categoria.Nome == categoria)
-               .OrderBy(p => p.Item)
-               .Skip((pagina - 1) * mosaicosPorPagina)
-               .Take(mosaicosPorPagina)
-               .ToList();
-
-            var model = new MosaicosViewModel();
-            model.Mosaicos = mosaicos;
-            model.Paginacao = new Paginacao()
+            
+            
+            _model.Paginacao = new Paginacao()
             {
                 PaginaAtual = pagina,
                 ItensPorPagina = mosaicosPorPagina,
                 ItensTotal = _loja.Mosaicos.Cast<Mosaico>().ToList().Count
             };
 
-            model.CategoriaAtual = categoria;
+            _model.CategoriaAtual = nomecategoria;
 
-            return View(model);
+            var mosaicos = _loja.Mosaicos.Cast<Mosaico>().ToList()
+               .Where(p => nomecategoria == null || p.Categoria.Nome == nomecategoria)
+               .OrderBy(p => p.Item)
+               .Skip((pagina - 1) * mosaicosPorPagina)
+               .Take(mosaicosPorPagina)
+               .ToList();
+
+            _model.Mosaicos = mosaicos;
+            
+
+            return View(_model);
         }
     }
 }

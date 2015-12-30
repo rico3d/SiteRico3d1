@@ -13,12 +13,19 @@ namespace WebSiteRico3d2
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //default
+            routes.MapRoute(
+                name: "Default", 
+                url: "{controller}/{action}/{id}", 
+                defaults: new { controller = "Home", 
+                  action = "Index", 
+                  id = UrlParameter.Optional });
           
             //1-Inicio Mosaicos
             routes.MapRoute(
-                null,
-                "",
-                new
+                name: null,
+                url: "{controller}/{action}", 
+                defaults: new
                 {
                     controller = "Vitrine", 
                     action = "ListaMosaicos",
@@ -28,20 +35,20 @@ namespace WebSiteRico3d2
 
             //2
             routes.MapRoute(
-                null,
-                "Pagina{pagina}",
-                 new
+                name: null,
+                url: "{controller}/{action}/Pagina{pagina}", 
+                defaults: new
                  {
                      controller = "Vitrine", 
                      action = "ListaMosaicos", 
-                     categoria = (string)null},
-                      new { pagina = @"\d+" });
+                     categoria = (string)null}, 
+                     constraints: new { pagina = @"\d+" });
 
             //3
             routes.MapRoute(
-              null,
-              "{categoria}",
-              new
+                name: null,
+                url: "{controller}/{action}/{categoria}", 
+                defaults: new
               {
                   controller = "Vitrine",
                   action = "ListaMosaicos",
@@ -51,20 +58,16 @@ namespace WebSiteRico3d2
             //4
 
             routes.MapRoute(
-                null,
-                "{categoria}Pagina{pagina}",
-                 new
+                name: null,
+                url: "{controller}/{action}/{categoria}/Pagina{pagina}", 
+                defaults: new
                  {
                      controller = "Vitrine",
                      action = "ListaMosaicos"
-                 },
-                 new { pagina = @"\d+" });
+                 }, 
+                 constraints: new { pagina = @"\d+" });
 
-            //default
-            routes.MapRoute(
-              "Default",
-              "{controller}/{action}/{id}",
-              new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+            
             
 
             
