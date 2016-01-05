@@ -47,7 +47,7 @@ namespace WebSiteRico3d2
             //3
             routes.MapRoute(
                 name: null,
-                url: "{controller}/{action}/{categoria}", 
+                url: "{controller}/{action}/{nomecategoria}", 
                 defaults: new
               {
                   controller = "Vitrine",
@@ -59,7 +59,7 @@ namespace WebSiteRico3d2
 
             routes.MapRoute(
                 name: null,
-                url: "{controller}/{action}/{categoria}/Pagina{pagina}", 
+                url: "{controller}/{action}/{nomecategoria}/Pagina{pagina}", 
                 defaults: new
                  {
                      controller = "Vitrine",

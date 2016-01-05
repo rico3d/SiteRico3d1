@@ -176,6 +176,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\VitrineController.cs" />
+    <Compile Include="DominioMosaico\Carrinho.cs" />
+    <Compile Include="DominioMosaico\ItemCarrinho.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -254,6 +256,7 @@
     <Content Include="Views\Categoria\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="brightstardb\" />
     <Folder Include="brightstar\" />
