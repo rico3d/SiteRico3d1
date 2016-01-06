@@ -4,6 +4,19 @@
     <h3><strong>@Model.Item</strong></h3>
     <h3><strong>@Model.Nome</strong></h3>
     <h3><span class="pull-right label label-primary">R$@Model.Preco</span></h3>
+    
+    @using (Html.BeginForm("Adicionar", "Carrinho"))
+    {
+        <div class="pull-right">
+            @Html.HiddenFor(x => x.Id)
+            @if (Request.Url != null)
+            {
+                @Html.Hidden("returnUrl",Request.Url.PathAndQuery)
+            }
+            <input type="submit" class="btn btn-sucess" value="Comprar"/>
+        </div>
+    }
+
     <h3><span class="lead">@Model.Descricao</span></h3>
     <h3><span class="pull-left label label-primary">Medidas:@Model.Dimensao kg</span></h3>
     <h3><span class="pull-right label label-primary">Peso:@Model.Peso kg</span></h3>

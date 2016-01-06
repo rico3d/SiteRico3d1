@@ -172,6 +172,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CarrinhoController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -261,6 +262,7 @@
     <Folder Include="brightstardb\" />
     <Folder Include="brightstar\" />
     <Folder Include="Image\" />
+    <Folder Include="Views\Carrinho\" />
     <Folder Include="Views\Produtos\" />
   </ItemGroup>
   <ItemGroup>
