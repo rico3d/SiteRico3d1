@@ -1,0 +1,13 @@
+﻿@model WebSiteRico3d2.DominioMosaico.Carrinho
+           
+<div class="navbar-right">
+    @Html.ActionLink("Checkout","Indice","Carrinho", new{returnUrl = Request.Url.PathAndQuery}, new{@class = "btn btn-default navbar-btn"}) 
+</div>
+
+<div class="navbar-text navbar-right">
+    <b>Seus produtos:</b>
+    @Model.ItensCarrinho.Sum(x => x.Quantidade) item(s), @Model.ObterValorTotal().ToString("c")
+</div>
+
+@Model.ItensCarrinho.Sum(x => x.Quantidade) item(s)
+

@@ -184,6 +184,7 @@
     </Compile>
     <Compile Include="HtmlHelpers\PaginacaoHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CarrinhoViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MosaicosViewModel.cs" />
@@ -255,6 +256,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Vitrine\ListaMosaicos.cshtml" />
     <Content Include="Views\Categoria\Menu.cshtml" />
+    <Content Include="Views\Carrinho\Indice.cshtml" />
+    <Content Include="Views\Carrinho\Resumo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Code\" />
@@ -262,7 +265,6 @@
     <Folder Include="brightstardb\" />
     <Folder Include="brightstar\" />
     <Folder Include="Image\" />
-    <Folder Include="Views\Carrinho\" />
     <Folder Include="Views\Produtos\" />
   </ItemGroup>
   <ItemGroup>
