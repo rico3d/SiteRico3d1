@@ -26,10 +26,10 @@ namespace WebSiteRico3d2.Controllers
         public ActionResult About(int pagina = 1)
         {
             ViewBag.Message = "Your application description page.";
-            var path = (string) TempData["path"];
+            //var path = (string) TempData["path"];
 
-            var connectionString = "type=embedded;storesdirectory=" + path + "brightstar;storename=test5";
-            _loja = new LojaMosaicosContext(connectionString);
+            //var connectionString = ; "type=embedded;storesdirectory=" + path + "brightstar;storename=test5";
+            _loja = new LojaMosaicosContext(WebApiConfig.StrConnectionString);
            
             
              

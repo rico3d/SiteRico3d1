@@ -14,9 +14,9 @@ namespace WebSiteRico3d2.Controllers
         {
 
             ViewBag.CategoriaSelecionada = categoriaNome;
-            string caminho = HttpContext.Server.MapPath("~/App_Data/");
-            string connectionString1 = "type=embedded;storesdirectory=" + caminho + "brightstar;storename=test5";
-            var repositorio = new LojaMosaicosContext(connectionString1);
+            //string caminho = HttpContext.Server.MapPath("~/App_Data/");
+            //string connectionString1 = "type=embedded;storesdirectory=" + caminho + "brightstar;storename=test5";
+            var repositorio = new LojaMosaicosContext(WebApiConfig.StrConnectionString);
             var categorias = repositorio.Categorias.Select(c => c.Nome).ToList().Distinct().OrderBy(c => c).ToList();
 
 

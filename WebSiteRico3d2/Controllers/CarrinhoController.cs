@@ -17,9 +17,9 @@ namespace WebSiteRico3d2.Controllers
         // GET: Carrinho
         public RedirectToRouteResult Adicionar(string Id, string returnUrl)
         {
-            var caminho = HttpContext.Server.MapPath("~/App_Data/");
-            var connectionString1 = "type=embedded;storesdirectory=" + caminho + "brightstar;storename=test5";
-            var repositorio = new LojaMosaicosContext(connectionString1);
+            //var caminho = HttpContext.Server.MapPath("~/App_Data/");
+            //var connectionString1 = "type=embedded;storesdirectory=" + caminho + "brightstar;storename=test5";
+            var repositorio = new LojaMosaicosContext(WebApiConfig.StrConnectionString);
 
             var mosaico = (Mosaico) repositorio.Mosaicos.FirstOrDefault(p => p.Id == Id);
             if (mosaico != null)
@@ -47,9 +47,9 @@ namespace WebSiteRico3d2.Controllers
         public RedirectToRouteResult Remover(string Id, string returnUrl)
         {
             
-            var caminho = HttpContext.Server.MapPath("~/App_Data/");
-            var connectionString1 = "type=embedded;storesdirectory=" + caminho + "brightstar;storename=test5";
-            var repositorio = new LojaMosaicosContext(connectionString1);
+            //var caminho = HttpContext.Server.MapPath("~/App_Data/");
+            //var connectionString1 = "type=embedded;storesdirectory=" + caminho + "brightstar;storename=test5";
+            var repositorio = new LojaMosaicosContext(WebApiConfig.StrConnectionString);
 
             var mosaico = (Mosaico)repositorio.Mosaicos.FirstOrDefault(p => p.Id == Id);
 
@@ -75,6 +75,11 @@ namespace WebSiteRico3d2.Controllers
         {
             var carrinho = ObterCarrinho();
             return PartialView(carrinho);
+        }
+
+        public ViewResult FecharPedido()
+        {
+            return View(new Pedido());
         }
 
 

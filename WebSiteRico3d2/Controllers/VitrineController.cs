@@ -12,7 +12,7 @@ namespace WebSiteRico3d2.Controllers
     {
 
         private LojaMosaicosContext _loja;
-        private string _caminho;
+        //private string _caminho;
         private MosaicosViewModel _model = new MosaicosViewModel();
         
         
@@ -27,11 +27,11 @@ namespace WebSiteRico3d2.Controllers
             int mosaicosPorPagina = 3;
             //if (_caminho == null)
             //{
-                _caminho = HttpContext.Server.MapPath("~/App_Data/");//(string)TempData["path"]; 
+                //_caminho = HttpContext.Server.MapPath("~/App_Data/");//(string)TempData["path"]; 
             //}
             
-            string connectionString1 = "type=embedded;storesdirectory=" + _caminho + "brightstar;storename=test5";
-            _loja = new LojaMosaicosContext(connectionString1);
+            //string connectionString1 = "type=embedded;storesdirectory=" + _caminho + "brightstar;storename=test5";
+            _loja = new LojaMosaicosContext(WebApiConfig.StrConnectionString);//connectionString1);
 
             //////////////////////////////////
             //var pesado = new Categoria()
